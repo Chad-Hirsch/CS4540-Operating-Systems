@@ -1,0 +1,56 @@
+debug-VirtualBox login: debug                                                   
+Password:                                                                       
+Last login: Mon Apr 15 14:37:10 EDT 2019 on ttyS0                               
+debug@debug-VirtualBox:~$ cd /                                                  
+debug@debug-VirtualBox:/$ cd lib                                                
+debug@debug-VirtualBox:/lib$ cd modules/                                        
+debug@debug-VirtualBox:/lib/modules$ cd 4.20.17/                                
+debug@debug-VirtualBox:/lib/modules/4.20.17$ cd build                           
+debug@debug-VirtualBox:/lib/modules/4.20.17/build$ gdb                          
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git                                
+Copyright (C) 2018 Free Software Foundation, Inc.                               
+debug@debug-VirtualBox:/lib/modules/4.20.17/build$ gdb
+GNU gdb (Ubuntu 8.1-0ubuntu3) 8.1.0.20180409-git
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word".
+(gdb) [ 1160.764979] This is right before I included a bug in the LKM to crash !
+[ 1160.765941] Kernel panic - not syncing: There was a bug! Chad Hirsch is to b9
+[ 1160.766664] CPU: 0 PID: 8699 Comm: insmod Tainted: G           OE     4.20.11
+[ 1160.767406] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualB6
+[ 1160.768129] Call Trace:
+[ 1160.768338]  dump_stack+0x63/0x85
+[ 1160.768610]  panic+0xfe/0x264
+[ 1160.768905]  ? 0xffffffffc0587000
+[ 1160.769254]  bug_init+0x28/0x1000 [bug]                                      
+[ 1160.769673]  do_one_initcall+0x4a/0x1c9                                      
+[ 1160.769997]  ? _cond_resched+0x19/0x40                                       
+[ 1160.770303]  ? kmem_cache_alloc_trace+0x42/0x1d0                             
+[ 1160.770666]  do_init_module+0x5f/0x216                                       
+[ 1160.770971]  load_module+0x21ff/0x2ae0                                       
+[ 1160.771313]  __do_sys_finit_module+0xfc/0x120                                
+[ 1160.771659]  ? __do_sys_finit_module+0xfc/0x120                              
+[ 1160.772025]  __x64_sys_finit_module+0x1a/0x20                                
+[ 1160.772377]  do_syscall_64+0x5a/0x120                                        
+[ 1160.772675]  entry_SYSCALL_64_after_hwframe+0x44/0xa9                        
+[ 1160.773081] RIP: 0033:0x7f74e1541839                                         
+[ 1160.773407] Code: 00 f3 c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 40 00 48 89 f8
+[ 1160.774852] RSP: 002b:00007ffea2051c38 EFLAGS: 00000246 ORIG_RAX: 00000000009
+[ 1160.775445] RAX: ffffffffffffffda RBX: 000055fa0ce7c780 RCX: 00007f74e1541839
+[ 1160.776056] RDX: 0000000000000000 RSI: 000055fa0ad14d2e RDI: 0000000000000003
+[ 1160.776612] RBP: 000055fa0ad14d2e R08: 0000000000000000 R09: 00007f74e1814000
+[ 1160.777402] R10: 0000000000000003 R11: 0000000000000246 R12: 0000000000000000
+[ 1160.778226] R13: 000055fa0ce7c750 R14: 0000000000000000 R15: 0000000000000000
+[ 1160.779115] Kernel Offset: 0x1c400000 from 0xffffffff81000000 (relocation ra)
+[ 1160.780307] ---[ end Kernel panic - not syncing: There was a bug! Chad Hirsc-
+

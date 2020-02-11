@@ -1,0 +1,39 @@
+1st Submition
+- In readfile.c: Remove 'mainArray'! The three arrays you make in Source.c 
+are all you need! The array 'towns' *must* be an array of pointers to the 
+elements of the 'cities' array! 
+DONE!
+
+- In Source.c and interactive.c you do malloc correct sizes, but in readfile.c 
+you are malloc()'ing for the wrong types/sizes! A string of 100 letters long is 
+allocated with the expression 'malloc(sizeof(char) * 101)' NOT 'malloc(sizeof(char*) * 101)'. 
+Although it does give you enough space (because pointers are larger than letters), it's still not right!
+DONE!
+
+2nd 
+- In readfile.c: You're first while loop in the big while loop has a line where it mallocs another 100 pointers, 
+(and assigns it to a pointer designed for pointing to a single city, which is already an issue), 
+Then it --in the next line-- overrides that only reference to those 800 bytes, loosing that data forever. 
+Why do you even have that line?
+DONE!
+
+- Some of your makefile rules are missing some dependencies,
+- Everytime I run 'make', it keeps relinking. It should only relink when files change.
+DONE!
+
+3rd
+- In readFile(): The only malloc should be for the 'town' field, because the cities structures 
+should've been allocated in getArrs(). Please writeit so there isn't the 'townZipStruct' variable. 
+The elements of the towns array should be refering to the elements in the cities array.
+DONE!
+
+4th 
+- In readfile(): 'malloc(sizeof(strlen(cityName)+1))' is wrong, something shouldn't be 
+there that is. This issue causes all of the allocations to only be 8 bytes long, regardless of string length.
+DONE!
+
+5th
+- In your makefile: Don't write explict commands for your rules! Including the linking rule!
+- This doesn't even build, because your makefile can been called "makefile.txt"
+- In readFile(): You forgot a "+ 1" in your malloc call
+- You don't free every memory allocation! (-5)
